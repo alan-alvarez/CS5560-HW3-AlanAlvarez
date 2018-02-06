@@ -1,0 +1,15 @@
+curl -X POST -H "Content-Type: application/json" -d '{"itemId": "Vehicle 1", "make": "Ford", "model": "Explorer", "year": "2004"}' localhost:3000/vehicles
+
+curl -X POST -H "Content-Type: application/json" -d '{"itemId": "Vehicle 2", "make": "Infiniti", "model": "FX35", "year": "2010"}' localhost:3000/vehicles
+
+curl -X POST -H "Content-Type: application/json" -d '{"itemId": "Vehicle 1", "make": "Nissan", "model": "Pathfinder", "year": "2009"}' localhost:3000/vehicles
+
+curl -X POST -H "Content-Type: application/json" -d '{"itemId": "Vehicle 1", "make": "Nissan", "model": "GTR", "year": "2016"}' localhost:3000/vehicles
+
+http://localhost:3000/vehicles/
+
+http://localhost:3000/vehicles/5a7936febef54c61086b44d1
+http://localhost:3000/vehicles/5a7936febef54c61086b44d2
+http://localhost:3000/vehicles/5a7936febef54c61086b44d3
+http://localhost:3000/vehicles/5a7936febef54c61086b44d4
+
