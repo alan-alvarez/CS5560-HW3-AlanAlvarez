@@ -1,13 +1,13 @@
-// Load the 'Vehicle' Mongoose model
-const Vehicle = require('mongoose').model('Vehicle');
+// Load the 'Note' Mongoose model
+const Note = require('mongoose').model('Note');
 
 // Create a new 'create' controller method
 exports.create = function (req, res, next) {
-	// Create a new instance of the 'Vehicle' Mongoose model
-	const vehicle = new Vehicle(req.body);
+	// Create a new instance of the 'Note' Mongoose model
+	const note = new Note(req.body);
 
-	// Use the 'Vehicle' instance's 'save' method to save a new vehicle document
-	vehicle.save((err) => {
+	// Use the 'Note' instance's 'save' method to save a new note document
+	note.save((err) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
@@ -20,14 +20,14 @@ exports.create = function (req, res, next) {
 
 // Create a new 'list' controller method
 exports.list = function (req, res, next) {
-	// Use the 'Vehicle' static 'find' method to retrieve the list of vehicles
-	Vehicle.find({}, (err, vehicles) => {
+	// Use the 'Note' static 'find' method to retrieve the list of notes
+	Note.find({}, (err, notes) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
 		} else {
 			// Use the 'response' object to send a list view
-			res.render('list', { vehiclesArray: vehicles });
+			res.render('list', { notesArray: notes });
 		}
 	});
 };
@@ -35,49 +35,49 @@ exports.list = function (req, res, next) {
 // Create a new 'read' controller method
 exports.read = function (req, res) {
 	// Use the 'response' object to send a detailed view
-	res.render('details', { vehicle: req.vehicle });
+	res.render('details', { note: req.note });
 };
 
 // Create a new 'update' controller method
 exports.update = function (req, res, next) {
-	// Use the 'Vehicle' static 'findByIdAndUpdate' method to update a specific vehicle
-	Vehicle.findByIdAndUpdate(req.vehicle.id, req.body, (err, vehicle) => {
+	// Use the 'Note' static 'findByIdAndUpdate' method to update a specific note
+	Note.findByIdAndUpdate(req.note.id, req.body, (err, note) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
 		} else {
 			// Use the 'response' object to send a JSON response
-			res.json(vehicle);
+			res.json(note);
 		}
 	})
 };
 
 // Create a new 'delete' controller method
 exports.delete = function (req, res, next) {
-	// Use the 'Vehicle' instance's 'remove' method to save a new vehicle document
-	req.vehicle.remove((err) => {
+	// Use the 'Note' instance's 'remove' method to save a new note document
+	req.note.remove((err) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
 		} else {
 			// Use the 'response' object to send a JSON response
-			res.json(req.vehicle);
+			res.json(req.note);
 		}
 	})
 };
 
-// Create a new 'vehicleByID' controller method
-exports.vehicleByItemId = function (req, res, next, id) {
-	// Use the 'Vehicle' static 'findOne' method to retrieve a specific vehicle
-	Vehicle.findOne({
+// Create a new 'noteBySubject' controller method
+exports.noteById = function (req, res, next, id) {
+	// Use the 'Note' static 'findOne' method to retrieve a specific note
+	Note.findOne({
 		_id: id
-	}, (err, vehicle) => {
+	}, (err, note) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
 		} else {
-			// Set the 'req.vehicle' property
-			req.vehicle = vehicle;
+			// Set the 'req.note' property
+			req.note = note;
 
 			// Call the next middleware
 			next();

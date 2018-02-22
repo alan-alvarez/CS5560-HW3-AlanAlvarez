@@ -3,14 +3,16 @@
 
 <head>
 	<!-- Use the 'title' property to render a page title  -->
-	<title>List Vehicles</title>
+	<title>List Notes</title>
 </head>
 
 <body>
 	<ul>
-		<% vehiclesArray.forEach(function(vehicle) { %>
-			<a href="http://localhost:3000/vehicles/<%= vehicle.id%>"><%= vehicle.title %></a>
+		<% notesArray.forEach(function(note) { %>
+			<a href="/notes/<%= note.id%>"><%= note.subject %></a>
 			<% }); %>
+			
+		<p><a href="create">Create a note<a></p>
 	</ul>
 </body>
 
