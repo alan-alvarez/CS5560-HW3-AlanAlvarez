@@ -47,15 +47,15 @@
 
 	<!-- Use the 'title' property to render a title element  -->
 	<!-- <button onclick="location.href = 'localhost:3000/notes';" id="myButton" class="float-left submit-button" ><%= title%></button> -->
-	<a href="notes">Click me to go to the project!!<a>
+	<p><a href="notes">Click me to go to the project!!</a></p>
 	
 	
 	<% if ( userFullName ) { %>
-		<h2>Hello <%=userFullName%> </h2>
-		<a href="/signout">Sign out</a>
+		<p><h2>Hello <%=userFullName%> </h2></p>
+		<p><a href="/signout">Sign out</a></p>
 	<% } else { %>
-		<a href="/signup">Signup</a>
-		<a href="/signin">Signin</a>
+		<p><a href="/signup">Signup</a></p>
+		<p><a href="/signin">Signin</a></p>
 	<% } %>
 	
 	<!--
@@ -64,7 +64,7 @@
 	
 	
 	
-	<a href="/oauth/facebook">Sign in with Facebook</a>
+	<p><a href="/oauth/facebook">Sign in with Facebook</a></p>
 	
 </body>
 </html>

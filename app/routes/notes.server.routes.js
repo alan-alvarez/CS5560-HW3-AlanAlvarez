@@ -5,6 +5,7 @@ const passport = require('passport');
 
 // Define the routes module' method
 module.exports = function (app) {
+	
 	// Mount the 'notes' controller's 'render' method
 	app.get('/create', notes.renderCreate);
 

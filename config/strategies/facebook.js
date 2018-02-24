@@ -12,6 +12,8 @@ module.exports = function() {
 		passReqToCallback: true
 	},
 	function(req, accessToken, refreshToken, profile, done) {
+		console.log('>>>> inside of facebook.js, the profile._json.email is : ' + profile._json.email);
+		console.log('>>>> inside of facebook.js, the profile is : ' + JSON.stringify(profile));
 		var providerData = profile._json;
 		providerData.accessToken = accessToken;
 		providerData.refreshToken = refreshToken;
@@ -19,13 +21,13 @@ module.exports = function() {
 			firstName: profile.name.givenName,
 			lastName: profile.name.familyName,
 			fullName: profile.displayName,
-			email: profile.emails[0].value,
+			email: profile.email,
 			username: profile.username,
 			provider: 'facebook',
 			providerId: profile.id,
 			providerData: providerData
 		};
-
+		console.log('>>>> inside of facebook.js, the providerUserProfile.fullName is : ' + providerUserProfile.fullName);
 		users.saveOAuthUserProfile(req, providerUserProfile, done);
 	}));
 };

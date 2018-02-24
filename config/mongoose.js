@@ -10,7 +10,7 @@ module.exports = function() {
 	// Load the 'Note' model 
 	require('../app/models/note.server.model');
 	
-	// Load the 'user' model 
+	// Load the 'User' model 
 	require('../app/models/user');
 
 	// Return the Mongoose connection instance
