@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 // Define a new 'NoteSchema'
 const NoteSchema = new Schema({
 	subject: String,
-	body: String
+	body: String,
+	userid: String
 });
 
 

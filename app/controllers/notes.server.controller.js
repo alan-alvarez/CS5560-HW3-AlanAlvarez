@@ -3,8 +3,11 @@ const Note = require('mongoose').model('Note');
 
 // Create a new 'create' controller method
 exports.create = function (req, res, next) {
+	
+
 	// Create a new instance of the 'Note' Mongoose model
 	const note = new Note(req.body);
+	note.userid = req.user._id;
 
 	// Use the 'Note' instance's 'save' method to save a new note document
 	note.save((err) => {
@@ -21,7 +24,7 @@ exports.create = function (req, res, next) {
 // Create a new 'list' controller method
 exports.list = function (req, res, next) {
 	// Use the 'Note' static 'find' method to retrieve the list of notes
-	Note.find({}, (err, notes) => {
+	Note.find({userid: req.user._id}, (err, notes) => {
 		if (err) {
 			// Call the next middleware with an error message
 			return next(err);
